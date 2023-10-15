@@ -1,0 +1,4 @@
+.slider-height {
+  min-height: calc(100vh - 53px);
+  min-height: --webkit-fill-available;
+}

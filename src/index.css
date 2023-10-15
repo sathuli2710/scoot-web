@@ -1,3 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Space+Mono:ital,wght@0,700;1,700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* .text-selection::selection {
+    @apply bg-yellow;
+    @apply bg-opacity-20;
+  } */
+
+  .text-h1 {
+    @apply text-[3.5rem];
+    @apply tracking-[-0.1563rem];
+    @apply leading-[3.5rem];
+    @apply font-headfont;
+    @apply font-bold;
+    /* @apply text-selection; */
+  }
+
+  .text-h2 {
+    @apply text-[3rem];
+    @apply tracking-[-0.1338rem];
+    @apply leading-[3rem];
+    @apply font-headfont;
+    @apply font-bold;
+    /* @apply text-selection; */
+  }
+
+  .text-h3 {
+    @apply text-[2.5rem];
+    @apply tracking-[-0.1119rem];
+    @apply leading-[3rem];
+    @apply font-headfont;
+    @apply font-bold;
+    /* @apply text-selection; */
+  }
+
+  .text-h4 {
+    @apply text-[1.5rem];
+    @apply tracking-[-0.0669rem];
+    @apply leading-[1.75rem];
+    @apply font-headfont;
+    @apply font-bold;
+    /* @apply text-selection; */
+  }
+
+  .text-body {
+    @apply text-[0.9375rem];
+    @apply leading-[1.5625rem];
+    @apply font-bodyfont;
+    /* @apply text-selection; */
+  }
+}
