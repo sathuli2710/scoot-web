@@ -3,7 +3,7 @@ import Button from "./Button";
 const HeroComp = () => {
   return (
     <div className="relative">
-      <div className="bg-[url('/Users/abul.a/Desktop/Learn/scoot-web/src/assets/heroimage.png')] bg-fixed bg-bottom bg-cover bg-no-repeat px-[100px] py-[150px] before:content-[''] before:absolute before:inset-0 before:bg-black before:bg-opacity-60">
+      <div className="bg-[url('/Users/abul.a/Desktop/Learn/scoot-web/src/assets/heroimage.png')] bg-bottom bg-fill bg-no-repeat px-[100px] py-[150px] before:content-[''] before:absolute before:inset-0 before:bg-black before:bg-opacity-60">
         <div className="w-fit relative flex flex-col gap-y-5 items-center">
           <h1 className="text-h3 lg:text-h1 sm:text-h3 text-white lg:w-[500px] md:w-[400px] text-center lg:text-start self-start">
             Scooter sharing made simple

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 import Logo from "./Logo";
 import { useWindowSize } from "usehooks-ts";
@@ -96,15 +96,27 @@ const Navbar = ({ navLinks }: NavbarProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const isSmallScreen = width < 768;
 
+  useEffect(() => {
+    const lockTarget: HTMLDivElement =
+      document.querySelector("#lockable-content")!;
+    if (isSidebarOpen) {
+      lockTarget?.classList.add("lock-screen-overlay");
+    } else {
+      lockTarget?.classList.remove("lock-screen-overlay");
+    }
+  }, [isSidebarOpen]);
+
   if (isSmallScreen) {
     return (
-      <nav className="relative w-full py-3 flex justify-between items-center px-5">
-        <Hamburger isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
-        <div className="w-full grid place-items-center">
-          <Logo fill="#495567" />
-        </div>
+      <>
+        <nav className="relative w-full py-3 flex justify-between items-center px-5">
+          <Hamburger isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+          <div className="w-full grid place-items-center">
+            <Logo fill="#495567" />
+          </div>
+        </nav>
         <div
-          className={`absolute top-[53px] left-0 duration-700 ease-in-out bg-darknavy overflow-hidden ${
+          className={`z-999 absolute top-[53px] left-0 duration-700 ease-in-out bg-darknavy overflow-hidden ${
             isSidebarOpen ? "w-[60%]" : "w-0 left-[-50%]"
           } py-14 slider-height flex flex-col items-center justify-between`}
         >
@@ -115,7 +127,7 @@ const Navbar = ({ navLinks }: NavbarProps) => {
           />
           <Button variant="filled" btnText="Get Scootin" />
         </div>
-      </nav>
+      </>
     );
   }
   return (

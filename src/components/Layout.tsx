@@ -1,7 +1,7 @@
-import { LayoutProps } from "../types/Layout";
+import { ChildrenType } from "../types/Layout";
 import Navbar from "./Navbar";
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: ChildrenType) => {
   return (
     <>
       <Navbar
@@ -28,7 +28,7 @@ const Layout = ({ children }: LayoutProps) => {
           },
         ]}
       />
-      {children}
+      <div id="lockable-content">{children}</div>
     </>
   );
 };
