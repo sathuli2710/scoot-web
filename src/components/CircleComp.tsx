@@ -5,15 +5,10 @@ type CircleCompProps = {
   height?: string;
 } & ChildrenType;
 
-const CircleComp = ({
-  children,
-  className = "",
-  width = "100px",
-  height = "100px",
-}: CircleCompProps) => {
+const CircleComp = ({ children, className = "" }: CircleCompProps) => {
   return (
     <div
-      className={`w-[${width}] h-[${height}] bg-yellow rounded-full grid place-items-center ${className}`}
+      className={`bg-yellow rounded-full grid place-items-center ${className}`}
     >
       {children}
     </div>

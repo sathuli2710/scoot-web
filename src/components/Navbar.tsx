@@ -54,10 +54,11 @@ const Hamburger = ({
   );
 };
 
-const NavLinksComp = ({
+export const NavLinksComp = ({
   isSmallScreen = false,
   navLinks = [],
   setIsOpen = () => {},
+  className = "",
 }: NavLinksCompProps) => {
   const linkClickHandler = (path: string, isNewTab: boolean) => {
     setIsOpen(false);
@@ -74,14 +75,14 @@ const NavLinksComp = ({
         isSmallScreen
           ? "w-full flex flex-col items-center gap-y-5"
           : "gap-x-5 h-full"
-      }`}
+      } ${className}`}
     >
       {navLinks.map((navLink: NavbarLink) => (
         <li
           key={Symbol(navLink.label).toString()}
           className={`w-full ${
             isSmallScreen ? "text-h4" : "text-body"
-          } text-dimgrey hover:text-yellow selection:bg-transparent cursor-pointer grid place-items-center`}
+          } hover:text-yellow selection:bg-transparent cursor-pointer grid place-items-center`}
           onClick={() => linkClickHandler(navLink.path, navLink.isNewTab)}
         >
           {navLink.label}
@@ -109,7 +110,7 @@ const Navbar = ({ navLinks }: NavbarProps) => {
   if (isSmallScreen) {
     return (
       <>
-        <nav className="relative w-full py-3 flex justify-between items-center px-5">
+        <nav className="relative w-full py-3 flex justify-between items-center px-5 text-dimgrey">
           <Hamburger isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
           <div className="w-full grid place-items-center">
             <Logo fill="#495567" />
@@ -118,12 +119,13 @@ const Navbar = ({ navLinks }: NavbarProps) => {
         <div
           className={`z-999 absolute top-[53px] left-0 duration-700 ease-in-out bg-darknavy overflow-hidden ${
             isSidebarOpen ? "w-[60%]" : "w-0 left-[-50%]"
-          } py-14 slider-height flex flex-col items-center justify-between`}
+          } py-14 slider-height flex flex-col items-center justify-between `}
         >
           <NavLinksComp
             isSmallScreen={isSmallScreen}
             navLinks={navLinks}
             setIsOpen={setIsSidebarOpen}
+            className="text-dimgrey"
           />
           <Button variant="filled" btnText="Get Scootin" />
         </div>
@@ -138,6 +140,7 @@ const Navbar = ({ navLinks }: NavbarProps) => {
           isSmallScreen={isSmallScreen}
           navLinks={navLinks}
           setIsOpen={setIsSidebarOpen}
+          className="text-dimgrey"
         />
       </div>
       <Button variant="filled" btnText="Get Scootin" />

@@ -1,4 +1,5 @@
 import Button from "./Button";
+import CircleDesign from "./CircleDesign";
 
 const HeroComp = () => {
   return (
@@ -34,9 +35,7 @@ const HeroComp = () => {
         </div>
       </div>
       <div className="hidden absolute bottom-6 -right-[35px] md:flex md:gap-x-5 md:items-center">
-        <div className="w-[70px] h-[70px] border-2 border-white rounded-full"></div>
-        <div className="w-[70px] h-[70px] border-2 border-white rounded-full"></div>
-        <div className="w-[70px] h-[70px] border-2 border-white rounded-full bg-white"></div>
+        <CircleDesign />
       </div>
       <div className="absolute bottom-16 md:left-0 left-[-150px] md:flex md:gap-x-5 md:items-center lg:hidden">
         <div className="flex flex-col items-end">
