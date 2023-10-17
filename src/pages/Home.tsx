@@ -1,11 +1,13 @@
+import GridSection from "../components/GridSection";
 import HeroComp from "../components/HeroComp";
-import Process from "../components/process";
+import Process from "../components/Process";
 
 const Home = () => {
   return (
     <div>
       <HeroComp />
       <Process />
+      <GridSection />
     </div>
   );
 };
