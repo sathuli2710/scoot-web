@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 import Logo from "./Logo";
 import { useWindowSize } from "usehooks-ts";
@@ -54,10 +54,11 @@ const Hamburger = ({
   );
 };
 
-const NavLinksComp = ({
+export const NavLinksComp = ({
   isSmallScreen = false,
   navLinks = [],
   setIsOpen = () => {},
+  className = "",
 }: NavLinksCompProps) => {
   const linkClickHandler = (path: string, isNewTab: boolean) => {
     setIsOpen(false);
@@ -74,14 +75,14 @@ const NavLinksComp = ({
         isSmallScreen
           ? "w-full flex flex-col items-center gap-y-5"
           : "gap-x-5 h-full"
-      }`}
+      } ${className}`}
     >
       {navLinks.map((navLink: NavbarLink) => (
         <li
           key={Symbol(navLink.label).toString()}
           className={`w-full ${
             isSmallScreen ? "text-h4" : "text-body"
-          } text-dimgrey hover:text-yellow selection:bg-transparent cursor-pointer grid place-items-center`}
+          } hover:text-yellow selection:bg-transparent cursor-pointer grid place-items-center`}
           onClick={() => linkClickHandler(navLink.path, navLink.isNewTab)}
         >
           {navLink.label}
@@ -96,26 +97,39 @@ const Navbar = ({ navLinks }: NavbarProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const isSmallScreen = width < 768;
 
+  useEffect(() => {
+    const lockTarget: HTMLDivElement =
+      document.querySelector("#lockable-content")!;
+    if (isSidebarOpen) {
+      lockTarget?.classList.add("lock-screen-overlay");
+    } else {
+      lockTarget?.classList.remove("lock-screen-overlay");
+    }
+  }, [isSidebarOpen]);
+
   if (isSmallScreen) {
     return (
-      <nav className="relative w-full py-3 flex justify-between items-center px-5">
-        <Hamburger isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
-        <div className="w-full grid place-items-center">
-          <Logo fill="#495567" />
-        </div>
+      <>
+        <nav className="relative w-full py-3 flex justify-between items-center px-5 text-dimgrey">
+          <Hamburger isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+          <div className="w-full grid place-items-center">
+            <Logo fill="#495567" />
+          </div>
+        </nav>
         <div
-          className={`absolute top-[53px] left-0 duration-700 ease-in-out bg-darknavy overflow-hidden ${
+          className={`z-999 absolute top-[53px] left-0 duration-700 ease-in-out bg-darknavy overflow-hidden ${
             isSidebarOpen ? "w-[60%]" : "w-0 left-[-50%]"
-          } py-14 slider-height flex flex-col items-center justify-between`}
+          } py-14 slider-height flex flex-col items-center justify-between `}
         >
           <NavLinksComp
             isSmallScreen={isSmallScreen}
             navLinks={navLinks}
             setIsOpen={setIsSidebarOpen}
+            className="text-dimgrey"
           />
           <Button variant="filled" btnText="Get Scootin" />
         </div>
-      </nav>
+      </>
     );
   }
   return (
@@ -126,6 +140,7 @@ const Navbar = ({ navLinks }: NavbarProps) => {
           isSmallScreen={isSmallScreen}
           navLinks={navLinks}
           setIsOpen={setIsSidebarOpen}
+          className="text-dimgrey"
         />
       </div>
       <Button variant="filled" btnText="Get Scootin" />

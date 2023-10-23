@@ -10,8 +10,9 @@ export type NavbarProps = {
 
 export type NavLinksCompProps = {
   isSmallScreen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-} & NavbarProps;
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+} & NavbarProps &
+  React.ComponentPropsWithRef<"ul">;
 
 export type HamburgerProps = {
   isOpen: boolean;

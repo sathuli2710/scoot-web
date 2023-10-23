@@ -15,6 +15,9 @@ export default {
         bodyfont: ["Lexend Deca", "sans-serif"],
         headfont: ["Space Mono", "monospace"],
       },
+      zIndex: {
+        999: 999,
+      },
     },
   },
   plugins: [],

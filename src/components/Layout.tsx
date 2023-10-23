@@ -1,34 +1,16 @@
-import { LayoutProps } from "../types/Layout";
+import { navLinks } from "../constants/navLinks";
+import { ChildrenType } from "../types/Layout";
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: ChildrenType) => {
   return (
-    <div>
-      <Navbar
-        navLinks={[
-          {
-            label: "Home",
-            path: "/",
-            isNewTab: false,
-          },
-          {
-            label: "About",
-            path: "/about",
-            isNewTab: false,
-          },
-          {
-            label: "Locations",
-            path: "/locations",
-            isNewTab: false,
-          },
-          {
-            label: "Careers",
-            path: "/careers",
-            isNewTab: false,
-          },
-        ]}
-      />
-      {children}
+    <div className="max-w-screen overflow-hidden">
+      <Navbar navLinks={navLinks} />
+      <div id="lockable-content">
+        {children}
+        <Footer />
+      </div>
     </div>
   );
 };
