@@ -1,19 +1,23 @@
-import { facebookIcon, instagramIcon, twitterIcon } from "../assets";
+import {
+  appstore,
+  facebookIcon,
+  instagramIcon,
+  playstore,
+  twitterIcon,
+} from "../assets";
 import { navLinks } from "../constants/navLinks";
-import AppStore from "./AppStore";
-import GooglePlay from "./GooglePlay";
 import Logo from "./Logo";
 
 const Footer = () => {
   return (
     <>
-      <div className="w-full bg-darknavy text-white flex lg:flex-row flex-col gap-y-10 justify-around lg:py-24 py-12 mt-5">
-        <h1 className="text-h2 lg:w-[415px] md:w-[315px] w-fit text-center lg:text-start">
+      <div className="w-full bg-darknavy text-white flex lg:flex-row flex-col items-center gap-y-10 justify-around lg:py-24 py-12 mt-5">
+        <h1 className="text-h2 lg:w-[415px] md:w-[50%] w-fit text-center lg:text-start">
           Sign up and Scoot off today
         </h1>
-        <div className="flex gap-x-3 items-center justify-center">
-          <GooglePlay />
-          <AppStore />
+        <div className="flex gap-x-3 items-center gap-y-3 justify-center flex-wrap">
+          <img src={appstore} alt="App Store Logo" />
+          <img src={playstore} alt="Play Store Logo" />
         </div>
       </div>
       <div className="w-full lg:py-4 py-12 flex lg:flex-row flex-col gap-y-6 justify-between items-stretch px-24 bg-[#333A44]">
