@@ -1,17 +1,18 @@
 import Button from "./Button";
 import CircleComp from "./CircleComp";
 import personwithmobile from "../assets/personwithmobile.png";
-import { gridSectionData } from "../constants/gridSectionData";
+import { topGridSectionData } from "../constants/gridSectionData";
 
 type GridSectionCompProps = {
   title: string;
   description: string;
-  btntext: string;
+  btntext?: string;
   imgSrc: string;
   isInverse: boolean;
+  isButton?: boolean;
 };
 
-const GridSectionComp = ({
+export const GridSectionComp = ({
   title = "Easy to use riding telemetry",
   description = `The Scoot app is available with riding telemetry. This means it can
   show you your average speed, how long you've been using the scooter,
@@ -20,6 +21,7 @@ const GridSectionComp = ({
   btntext = "Learn More",
   imgSrc = personwithmobile,
   isInverse = false,
+  isButton = true,
 }: GridSectionCompProps) => {
   return (
     <div
@@ -56,7 +58,7 @@ const GridSectionComp = ({
       <div className="lg:w-[445px] w-[250px] flex flex-col gap-y-3 lg:items-start items-center text-center lg:text-start">
         <h3 className="text-h3 w-full">{title}</h3>
         <p className="text-body w-full">{description}</p>
-        <Button btnText={btntext} variant="filled" />
+        {isButton && <Button btnText={btntext} variant="filled" />}
       </div>
     </div>
   );
@@ -65,7 +67,7 @@ const GridSectionComp = ({
 const GridSection = () => {
   return (
     <div>
-      {gridSectionData.map((grid, idx) => (
+      {topGridSectionData.map((grid, idx) => (
         <GridSectionComp
           key={grid.id}
           {...grid}
