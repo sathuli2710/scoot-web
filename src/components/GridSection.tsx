@@ -8,18 +8,15 @@ type GridSectionCompProps = {
   description: string;
   btntext?: string;
   imgSrc: string;
-  isInverse: boolean;
+  isInverse?: boolean;
   isButton?: boolean;
 };
 
 export const GridSectionComp = ({
-  title = "Easy to use riding telemetry",
-  description = `The Scoot app is available with riding telemetry. This means it can
-  show you your average speed, how long you've been using the scooter,
-  your traveling distance, and many more things all in an easy to use
-  app.`,
-  btntext = "Learn More",
-  imgSrc = personwithmobile,
+  title = "",
+  description = "",
+  btntext = "",
+  imgSrc = "",
   isInverse = false,
   isButton = true,
 }: GridSectionCompProps) => {
@@ -56,7 +53,7 @@ export const GridSectionComp = ({
         </div>
       </div>
       <div className="lg:w-[445px] w-[250px] flex flex-col gap-y-3 lg:items-start items-center text-center lg:text-start">
-        <h3 className="text-h3 w-full">{title}</h3>
+        <h3 className="text-h3 w-full text-darknavy">{title}</h3>
         <p className="text-body w-full">{description}</p>
         {isButton && <Button btnText={btntext} variant="filled" />}
       </div>

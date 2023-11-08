@@ -11,7 +11,7 @@ const HeroComp = () => {
           </h1>
           <div className="lg:flex lg:items-center lg:gap-x-10 lg:ml-[-100px]">
             <div className="w-[150px] h-3 bg-yellow lg:block hidden"></div>
-            <p className="lg:w-[400px] md:w-[300px] text-body text-white  ml-0 text-center lg:text-start">
+            <p className="lg:w-[400px] md:w-[300px] text-body text-white ml-0 text-center lg:text-start">
               Scoot takes the hassle out of urban mobility. Our bikes are placed
               in convenient locations in each of our cities. Use our app to
               locate the nearest bike, unlock it with a tap, and you’re away!

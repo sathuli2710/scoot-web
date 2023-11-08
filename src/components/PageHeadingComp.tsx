@@ -1,3 +1,5 @@
+import CircleDesign from "./CircleDesign";
+
 const PageHeadingComp = ({ bgSrc = "", title = "" }) => {
   return (
     <div
@@ -6,6 +8,9 @@ const PageHeadingComp = ({ bgSrc = "", title = "" }) => {
       <h3 className="w-full lg:w-max absolute top-[80px] lg:left-[50px] z-100 text-white text-h3 opacity-100 lg:text-start text-center">
         {title}
       </h3>
+      <div className="hidden absolute bottom-6 -right-[35px] md:flex md:gap-x-5 md:items-center">
+        <CircleDesign />
+      </div>
     </div>
   );
 };
