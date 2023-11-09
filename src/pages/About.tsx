@@ -19,6 +19,7 @@ const About: React.FC = () => {
             key={grid.id}
             {...grid}
             isInverse={idx % 2 === 1 ? true : false}
+            isButton={false}
           />
         ))}
       </div>

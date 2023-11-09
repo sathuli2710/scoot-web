@@ -10,6 +10,8 @@ import {
   NavbarProps,
 } from "../types/Navbar";
 import { Dimension } from "../types/common";
+import MoonIcon from "./MoonIcon";
+import SunIcon from "./SunIcon";
 
 const Hamburger = ({
   isOpen = false,
@@ -92,7 +94,7 @@ export const NavLinksComp = ({
   );
 };
 
-const Navbar = ({ navLinks }: NavbarProps) => {
+const Navbar = ({ navLinks, setDark = () => {}, isDark }: NavbarProps) => {
   const { width }: Dimension = useWindowSize();
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const isSmallScreen = width < 768;
@@ -107,6 +109,13 @@ const Navbar = ({ navLinks }: NavbarProps) => {
     }
   }, [isSidebarOpen]);
 
+  // const toggleTheme = () => {
+  //   const htmlElement: HTMLElement | null = document.querySelector("html");
+  //   if (htmlElement?.classList.contains("dark"))
+  //     htmlElement.classList.remove("dark");
+  //   else htmlElement?.classList.add("dark");
+  // };
+
   if (isSmallScreen) {
     return (
       <>
@@ -118,7 +127,7 @@ const Navbar = ({ navLinks }: NavbarProps) => {
         </nav>
         <div
           className={`z-999 absolute top-[53px] left-0 duration-700 ease-in-out bg-darknavy overflow-hidden ${
-            isSidebarOpen ? "w-[60%]" : "w-0 left-[-50%]"
+            isSidebarOpen ? "w-[70%]" : "w-0 left-[-50%]"
           } py-14 slider-height flex flex-col items-center justify-between `}
         >
           <NavLinksComp
@@ -127,7 +136,16 @@ const Navbar = ({ navLinks }: NavbarProps) => {
             setIsOpen={setIsSidebarOpen}
             className="text-dimgrey"
           />
-          <Button variant="filled" btnText="Get Scootin" />
+          <div className="flex flex-col items-center gap-y-3">
+            <div
+              className="bg-dimgrey dark:bg-lightgrey text-white dark:text-black grid place-items-center rounded-full w-[40px] h-[40px] cursor-pointer"
+              onClick={() => setDark((prevValue) => !prevValue)}
+            >
+              {!isDark && <SunIcon />}
+              {isDark && <MoonIcon />}
+            </div>
+            <Button variant="filled" btnText="Get Scootin" />
+          </div>
         </div>
       </>
     );
@@ -135,7 +153,8 @@ const Navbar = ({ navLinks }: NavbarProps) => {
   return (
     <nav className="w-full py-3 flex justify-between items-stretch px-5">
       <div className="flex gap-x-[3.125rem] items-center">
-        <Logo fill="#495567" />
+        <Logo fill="#495567" className="dark:hidden" />
+        <Logo fill="#FFFFFF" className="dark:block hidden" />
         <NavLinksComp
           isSmallScreen={isSmallScreen}
           navLinks={navLinks}
@@ -143,7 +162,16 @@ const Navbar = ({ navLinks }: NavbarProps) => {
           className="text-dimgrey"
         />
       </div>
-      <Button variant="filled" btnText="Get Scootin" />
+      <div className="flex items-center gap-x-3">
+        <div
+          className="bg-darknavy dark:bg-lightgrey text-white dark:text-black grid place-items-center rounded-full w-[40px] h-[40px] cursor-pointer"
+          onClick={() => setDark((prevValue) => !prevValue)}
+        >
+          {!isDark && <SunIcon />}
+          {isDark && <MoonIcon />}
+        </div>
+        <Button variant="filled" btnText="Get Scootin" />
+      </div>
     </nav>
   );
 };

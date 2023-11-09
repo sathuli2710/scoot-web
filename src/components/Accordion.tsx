@@ -8,12 +8,12 @@ const Accordion = ({
   const [isAccordionOpen, setAccordionOpen] = useState(isOpen);
   return (
     <div
-      className="w-full bg-lightgrey p-6 text-darknavy"
+      className="w-full bg-snow dark:bg-dimgrey p-6"
       onClick={() => setAccordionOpen(!isAccordionOpen)}
     >
       <div className="overflow-hidden duration-500 ease-in-out">
         <div className="flex justify-between items-center cursor-pointer gap-3">
-          <h4 className="text-h4">{title}</h4>
+          <h4 className="text-h4 text-darknavy">{title}</h4>
           <svg
             width="18"
             height="13"
@@ -27,7 +27,9 @@ const Accordion = ({
             <path d="M2 2L10 10L18 2" stroke="#FCB72B" stroke-width="3" />
           </svg>
         </div>
-        {isAccordionOpen && <p className="text-body mt-4">{description}</p>}
+        {isAccordionOpen && (
+          <p className="text-body mt-4 text-dimgrey dark:text-lightgrey">{description}</p>
+        )}
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ export type NavbarLink = {
 
 export type NavbarProps = {
   navLinks: NavbarLink[];
+  setDark?: React.Dispatch<React.SetStateAction<boolean>>;
+  isDark?: boolean
 };
 
 export type NavLinksCompProps = {

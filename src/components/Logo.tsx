@@ -1,6 +1,6 @@
 import { LogoProps } from "../types/Logo";
 
-const Logo = ({ fill = "#495567" }: LogoProps) => {
+const Logo = ({ fill = "#495567", className = "" }: LogoProps) => {
   return (
     <svg
       width="108"
@@ -8,6 +8,7 @@ const Logo = ({ fill = "#495567" }: LogoProps) => {
       viewBox="0 0 108 29"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={`${className}`}
     >
       <path
         fillRule="evenodd"

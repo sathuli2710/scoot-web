@@ -18,7 +18,7 @@ const ProcessComp = ({
     <div className="flex flex-col md:flex-row lg:flex-col items-center lg:items-start gap-x-12 gap-y-4">
       <CircleComp className="w-[100px] h-[100px]">{iconComp}</CircleComp>
       <div className="flex flex-col gap-y-4 flex-1 items-center md:items-start text-center md:text-start">
-        <h4 className="text-h4">{title}</h4>
+        <h4 className="text-h4 text-darknavy">{title}</h4>
         <p className="text-body xl:w-[21.875rem] lg:w-fit md:w-[25rem] w-[70%] text-dimgrey">
           {description}
         </p>

@@ -34,7 +34,7 @@ export const GridSectionComp = ({
           isInverse
             ? "lg:-left-[125px] -left-[100px]"
             : "lg:-right-[125px] -right-[100px]"
-        } lg:w-[200px] lg:h-[200px] w-[200px] h-[200px] rounded-full bg-lightgrey`}
+        } lg:w-[200px] lg:h-[200px] w-[200px] h-[200px] rounded-full bg-lightgrey dark:bg-dimgrey`}
       ></div>
       <div
         className={`absolute ${
@@ -54,7 +54,7 @@ export const GridSectionComp = ({
       </div>
       <div className="lg:w-[445px] w-[250px] flex flex-col gap-y-3 lg:items-start items-center text-center lg:text-start">
         <h3 className="text-h3 w-full text-darknavy">{title}</h3>
-        <p className="text-body w-full">{description}</p>
+        <p className="text-body w-full text-dimgrey">{description}</p>
         {isButton && <Button btnText={btntext} variant="filled" />}
       </div>
     </div>

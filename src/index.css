@@ -6,8 +6,28 @@
 
 @layer components {
   /* .text-selection::selection {
-    @apply bg-yellow;
+    @apply bg-yellow dark:bg-red-400;
     @apply bg-opacity-20;
+  } */
+
+  /* .bg-yellow dark:bg-red-400 {
+    @apply dark:bg-red-400;
+  }
+
+  .text-yellow {
+    @apply dark:text-red-400;
+  }
+  
+  .border-yellow dark:border-red-400 {
+    @apply dark:border-red-400;
+  }
+
+  .bg-white {
+    @apply dark:bg-[#121212];
+  }
+
+  .text-dimgrey {
+    @apply dark:text-lightgrey;
   } */
 
   .text-h1 {
