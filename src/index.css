@@ -52,4 +52,39 @@
     @apply font-bodyfont;
     /* @apply text-selection; */
   }
+
+  .bg-image-opacity {
+    /* @apply content-[' ']; */
+    @apply block;
+    @apply absolute;
+    @apply left-0;
+    @apply top-0;
+    @apply w-full;
+    @apply h-full;
+    @apply opacity-75;
+    @apply bg-[#2F3B59];
+    @apply bg-no-repeat;
+    @apply bg-cover;
+    /* @apply bg-[50% 0]; */
+  }
+
+  .homepageherobg {
+    background: url("/src/assets/heroimage.png");
+  }
+  .aboutpagebg::before {
+    background-image: linear-gradient(
+        0deg,
+        rgba(47, 59, 89, 0.75),
+        rgba(47, 59, 89, 0.75)
+      ),
+      url("/src/assets/aboutbg.png");
+  }
+  .locationspagebg::before {
+    background-image: linear-gradient(
+        0deg,
+        rgba(47, 59, 89, 0.75),
+        rgba(47, 59, 89, 0.75)
+      ),
+      url("/src/assets/locationsbg.png");
+  }
 }

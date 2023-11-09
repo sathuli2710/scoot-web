@@ -1,4 +1,4 @@
-import { city, personwithmobile, wallet } from "../assets";
+import { city, city1, mobile1, personwithmobile, wallet } from "../assets";
 
 type GridData = {
   id: number;
@@ -41,13 +41,13 @@ export const aboutGridSectionData: GridData[] = [
     title: "Mobility for the digital era",
     description:
       "Getting around should be simple (and even fun!) for everyone. We embrace technology to provide low cost, smart access to scooters at your fingertips.",
-    imgSrc: personwithmobile,
+    imgSrc: mobile1,
   },
   {
     id: 2,
     title: "Better urban living",
     description:
       "We’re helping connect cities and bring people closer together. Our scooters are also fully-electric and we offset the minimal carbon footprint for each ride.",
-    imgSrc: city,
+    imgSrc: city1,
   },
 ];

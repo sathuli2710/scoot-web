@@ -12,7 +12,7 @@ import PageHeadingComp from "../components/PageHeadingComp";
 const About: React.FC = () => {
   return (
     <main className="px-6">
-      <PageHeadingComp title="About" bgSrc="/aboutBg.png" />
+      <PageHeadingComp title="About" bgImageClass="aboutpagebg" />
       <div>
         {aboutGridSectionData.map((grid, idx) => (
           <GridSectionComp

@@ -1,4 +1,4 @@
-import { city, personwithmobile, wallet } from "../assets";
+import { city, mobile2, people, personwithmobile, scooter, wallet } from "../assets";
 
 export const valuesData = [
   {
@@ -6,21 +6,21 @@ export const valuesData = [
     title: "Our tech",
     description:
       "We’re using cutting edge technology to drive accessible urban transportation forward. Our fully electric scooters are a joy to ride!",
-    imgSrc: personwithmobile,
+    imgSrc: mobile2,
   },
   {
     id: 2,
     title: "Our integrity",
     description:
       "We are fully committed to deliver a great yet safe, sustainable micro-mobility experience in every city we serve.",
-    imgSrc: wallet,
+    imgSrc: scooter,
   },
   {
     id: 3,
     title: "Our community",
     description:
       "We support every community we serve. All workers are paid a living wage based on their location and are Scoot employees.",
-    imgSrc: city,
+    imgSrc: people,
   },
 ];
 

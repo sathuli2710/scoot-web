@@ -1,4 +1,4 @@
-import { personwithmobile } from "../assets";
+import { careerperson, personwithmobile } from "../assets";
 import { GridSectionComp } from "../components/GridSection";
 import JobPost from "../components/JobPost";
 import PageHeadingComp from "../components/PageHeadingComp";
@@ -9,11 +9,11 @@ import { jobs } from "../constants/careersPageData";
 const Careers: React.FC = () => {
   return (
     <main className="px-6">
-      <PageHeadingComp title="Careers" bgSrc="/aboutBg.png" />
+      <PageHeadingComp title="Careers" bgImageClass="locationspagebg" />
       <GridSectionComp
         title="Care to join our mission?"
         description="We’re always looking for ambitious individuals to help us on our journey. If you’re passionate about our mission to provide clean, accessible transport to improve urban living we want to hear from you!"
-        imgSrc={personwithmobile}
+        imgSrc={careerperson}
         btntext="Say Hello"
       />
       <h3 className="text-h3 text-darknavy text-center my-5">Why join us?</h3>
