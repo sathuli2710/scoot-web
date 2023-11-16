@@ -1,4 +1,4 @@
-import { careerperson, personwithmobile } from "../assets";
+import { careerperson } from "../assets";
 import { GridSectionComp } from "../components/GridSection";
 import JobPost from "../components/JobPost";
 import PageHeadingComp from "../components/PageHeadingComp";

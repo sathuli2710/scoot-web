@@ -1,9 +1,10 @@
-import { ChildrenType } from "../types/Layout";
+import { DivChildrenType } from "./Layout";
 
 type CircleCompProps = {
   width?: string;
   height?: string;
-} & ChildrenType;
+  className?: string;
+} & DivChildrenType;
 
 const CircleComp = ({ children, className = "" }: CircleCompProps) => {
   return (

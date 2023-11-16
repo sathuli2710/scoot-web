@@ -1,4 +1,4 @@
-import { city, mobile2, people, personwithmobile, scooter, wallet } from "../assets";
+import { mobile2, people, scooter } from "../assets";
 
 export const valuesData = [
   {
