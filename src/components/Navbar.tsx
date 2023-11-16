@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import { useWindowSize } from "usehooks-ts";
 import MoonIcon from "./MoonIcon";
 import SunIcon from "./SunIcon";
+import { useLocation } from "react-router";
 
 export type Dimension = {
   width: number;
@@ -81,14 +82,18 @@ export const NavLinksComp = ({
   setIsOpen = () => {},
   className = "",
 }: NavLinksCompProps) => {
+  const location = useLocation();
   const linkClickHandler = (path: string, isNewTab: boolean) => {
-    setIsOpen(false);
-    setTimeout(
-      () => {
-        window.open(path, isNewTab ? "_blank" : "_self");
-      },
-      isSmallScreen ? 500 : 0
-    );
+    if (path !== location?.pathname) {
+      console.log("dvkvn");
+      setIsOpen(false);
+      setTimeout(
+        () => {
+          window.open(path, isNewTab ? "_blank" : "_self");
+        },
+        isSmallScreen ? 500 : 0
+      );
+    }
   };
   return (
     <ul
@@ -102,6 +107,8 @@ export const NavLinksComp = ({
         <li
           key={navLink?.path}
           className={`w-full ${
+            location?.pathname === navLink?.path ? "text-yellow" : ""
+          } ${
             isSmallScreen ? "text-h4" : "text-body"
           } hover:text-yellow selection:bg-transparent cursor-pointer grid place-items-center`}
           onClick={() => linkClickHandler(navLink?.path, navLink?.isNewTab)}
