@@ -12,6 +12,8 @@ import mobile2 from "./mobile2.png";
 import city1 from "./city1.png";
 import people from "./people.png";
 import scooter from "./scooter.png";
+import map from "./map.png";
+import mapsmall from "./mapsmall.png";
 
 export {
   personwithmobile,
@@ -28,4 +30,6 @@ export {
   city1,
   people,
   scooter,
+  map,
+  mapsmall,
 };

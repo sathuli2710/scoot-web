@@ -3,8 +3,8 @@ import { GridSectionComp } from "../components/GridSection";
 import JobPost from "../components/JobPost";
 import PageHeadingComp from "../components/PageHeadingComp";
 import Value from "../components/Value";
-import { valuesData } from "../constants/aboutPageData";
-import { jobs } from "../constants/careersPageData";
+import { valuesData } from "../data/aboutPageData";
+import { jobs } from "../data/careersPageData";
 
 const Careers: React.FC = () => {
   return (

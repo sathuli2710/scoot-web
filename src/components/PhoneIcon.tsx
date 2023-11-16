@@ -1,4 +1,5 @@
-const PhoneIcon = () => {
+import React from "react";
+const PhoneIcon: React.FC = () => {
   return (
     <svg
       width="39"

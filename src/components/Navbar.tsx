@@ -2,16 +2,35 @@ import { useEffect, useState } from "react";
 import Button from "./Button";
 import Logo from "./Logo";
 import { useWindowSize } from "usehooks-ts";
-import "../styles/Navbar.css";
-import {
-  HamburgerProps,
-  NavLinksCompProps,
-  NavbarLink,
-  NavbarProps,
-} from "../types/Navbar";
-import { Dimension } from "../types/common";
 import MoonIcon from "./MoonIcon";
 import SunIcon from "./SunIcon";
+
+export type Dimension = {
+  width: number;
+  height: number;
+};
+export type NavbarLink = {
+  label: string;
+  path: string;
+  isNewTab: boolean;
+};
+
+export type NavbarProps = {
+  navLinks: NavbarLink[];
+  setDark?: React.Dispatch<React.SetStateAction<boolean>>;
+  isDark?: boolean;
+};
+
+export type NavLinksCompProps = {
+  isSmallScreen: boolean;
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  navLinks: NavbarLink[];
+} & React.ComponentPropsWithRef<"ul">;
+
+export type HamburgerProps = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const Hamburger = ({
   isOpen = false,
@@ -81,13 +100,13 @@ export const NavLinksComp = ({
     >
       {navLinks.map((navLink: NavbarLink) => (
         <li
-          key={Symbol(navLink.label).toString()}
+          key={navLink?.path}
           className={`w-full ${
             isSmallScreen ? "text-h4" : "text-body"
           } hover:text-yellow selection:bg-transparent cursor-pointer grid place-items-center`}
-          onClick={() => linkClickHandler(navLink.path, navLink.isNewTab)}
+          onClick={() => linkClickHandler(navLink?.path, navLink?.isNewTab)}
         >
-          {navLink.label}
+          {navLink?.label}
         </li>
       ))}
     </ul>
@@ -97,7 +116,7 @@ export const NavLinksComp = ({
 const Navbar = ({ navLinks, setDark = () => {}, isDark }: NavbarProps) => {
   const { width }: Dimension = useWindowSize();
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-  const isSmallScreen = width < 768;
+  const isSmallScreen: boolean = width < 768;
 
   useEffect(() => {
     const lockTarget: HTMLDivElement =
@@ -108,13 +127,6 @@ const Navbar = ({ navLinks, setDark = () => {}, isDark }: NavbarProps) => {
       lockTarget?.classList.remove("lock-screen-overlay");
     }
   }, [isSidebarOpen]);
-
-  // const toggleTheme = () => {
-  //   const htmlElement: HTMLElement | null = document.querySelector("html");
-  //   if (htmlElement?.classList.contains("dark"))
-  //     htmlElement.classList.remove("dark");
-  //   else htmlElement?.classList.add("dark");
-  // };
 
   if (isSmallScreen) {
     return (

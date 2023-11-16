@@ -1,16 +1,19 @@
+import { topGridSectionData } from "../data/topPageData";
 import Button from "./Button";
 import CircleComp from "./CircleComp";
-import personwithmobile from "../assets/personwithmobile.png";
-import { topGridSectionData } from "../constants/gridSectionData";
 
-type GridSectionCompProps = {
+export type GridData = {
+  id?: number;
   title: string;
   description: string;
   btntext?: string;
   imgSrc: string;
+};
+
+type GridSectionCompProps = {
   isInverse?: boolean;
   isButton?: boolean;
-};
+} & GridData;
 
 export const GridSectionComp = ({
   title = "",

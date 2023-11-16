@@ -1,4 +1,7 @@
-import { ButtonProps } from "../types/Button";
+type ButtonProps = {
+  variant?: "filled" | "outlined";
+  btnText: string;
+} & React.ComponentPropsWithoutRef<"button">;
 
 const Button = ({
   variant = "filled",

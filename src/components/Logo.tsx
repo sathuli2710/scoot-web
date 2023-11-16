@@ -1,4 +1,7 @@
-import { LogoProps } from "../types/Logo";
+export type LogoProps = {
+  fill: string;
+  className?: string;
+};
 
 const Logo = ({ fill = "#495567", className = "" }: LogoProps) => {
   return (
