@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import {
   appstore,
   facebookIcon,
@@ -9,6 +10,12 @@ import { navLinks } from "../data/navLinks";
 import Logo from "./Logo";
 
 const Footer = () => {
+  const location = useLocation();
+  const linkClickHandler = (path: string, isNewTab: boolean) => {
+    if (path !== location?.pathname) {
+      window.open(path, isNewTab ? "_blank" : "_self");
+    }
+  };
   return (
     <>
       <div className="w-full bg-darknavy text-white flex lg:flex-row flex-col items-center gap-y-10 justify-around lg:py-24 py-12 mt-5">
@@ -28,12 +35,11 @@ const Footer = () => {
               return (
                 <li
                   key={Symbol(navLink.label).toString()}
-                  className="w-full lg:text-body text-h4 hover:text-yellow selection:bg-transparent cursor-pointer grid place-items-center"
+                  className={`w-full lg:text-body text-h4 ${
+                    location?.pathname == navLink?.path ? "text-yellow" : ""
+                  } hover:text-yellow selection:bg-transparent cursor-pointer grid place-items-center`}
                   onClick={() =>
-                    window.open(
-                      navLink.path,
-                      navLink.isNewTab ? "_blank" : "_self"
-                    )
+                    linkClickHandler(navLink?.path, navLink?.isNewTab)
                   }
                 >
                   {navLink.label}

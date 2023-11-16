@@ -85,7 +85,6 @@ export const NavLinksComp = ({
   const location = useLocation();
   const linkClickHandler = (path: string, isNewTab: boolean) => {
     if (path !== location?.pathname) {
-      console.log("dvkvn");
       setIsOpen(false);
       setTimeout(
         () => {
@@ -126,26 +125,32 @@ const Navbar = ({ navLinks, setDark = () => {}, isDark }: NavbarProps) => {
   const isSmallScreen: boolean = width < 768;
 
   useEffect(() => {
+    const overlayTarget: HTMLDivElement =
+      document.querySelector("#overlay-content")!;
     const lockTarget: HTMLDivElement =
       document.querySelector("#lockable-content")!;
     if (isSidebarOpen) {
-      lockTarget?.classList.add("lock-screen-overlay");
+      overlayTarget.classList.add("lock-screen-overlay");
+      lockTarget.classList.add("overflow-hidden");
+      lockTarget.classList.add("h-[calc(100vh-53px)]");
     } else {
-      lockTarget?.classList.remove("lock-screen-overlay");
+      overlayTarget.classList.remove("lock-screen-overlay");
+      lockTarget.classList.remove("overflow-hidden");
+      lockTarget.classList.remove("h-[calc(100vh-53px)]");
     }
   }, [isSidebarOpen]);
 
   if (isSmallScreen) {
     return (
       <>
-        <nav className="relative w-full py-3 flex justify-between items-center px-5 text-dimgrey">
+        <nav className="fixed top-0 w-full py-3 flex justify-between items-center px-5 text-dimgrey z-999 bg-white dark:bg-black drop-shadow-2xl">
           <Hamburger isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
           <div className="w-full grid place-items-center">
             <Logo fill="#495567" />
           </div>
         </nav>
         <div
-          className={`z-999 absolute top-[53px] left-0 duration-700 ease-in-out bg-darknavy overflow-hidden ${
+          className={`z-999 fixed top-[53px] left-0 duration-700 ease-in-out bg-darknavy overflow-hidden ${
             isSidebarOpen ? "w-[70%]" : "w-0 left-[-50%]"
           } py-14 slider-height flex flex-col items-center justify-between `}
         >
@@ -170,7 +175,7 @@ const Navbar = ({ navLinks, setDark = () => {}, isDark }: NavbarProps) => {
     );
   }
   return (
-    <nav className="w-full py-3 flex justify-between items-stretch px-5">
+    <nav className="fixed top-0 w-full py-3 flex justify-between items-stretch px-5 z-999 bg-white dark:bg-black drop-shadow-2xl">
       <div className="flex gap-x-[3.125rem] items-center">
         <Logo fill="#495567" className="dark:hidden" />
         <Logo fill="#FFFFFF" className="dark:block hidden" />
