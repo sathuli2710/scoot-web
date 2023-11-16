@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import Logo from "./Logo";
-import { useWindowSize } from "usehooks-ts";
+import { useOnClickOutside, useWindowSize } from "usehooks-ts";
 import MoonIcon from "./MoonIcon";
 import SunIcon from "./SunIcon";
 import { useLocation } from "react-router";
@@ -41,6 +41,7 @@ const Hamburger = ({
     <div
       className="relative w-[20px] h-4 cursor-pointer"
       onClick={() => setIsOpen((prevValue) => !prevValue)}
+      id="hamburger"
     >
       <div
         className={`absolute left-0 w-full h-1 rounded-md bg-yellow duration-150 ease-in-out ${
@@ -120,23 +121,27 @@ export const NavLinksComp = ({
 };
 
 const Navbar = ({ navLinks, setDark = () => {}, isDark }: NavbarProps) => {
+  const sidebarRef = useRef(null);
   const { width }: Dimension = useWindowSize();
+  const closeHandler = (e: any) => {
+    if (e.target.parentNode.id !== "hamburger" && e.target.id !== "hamburger")
+      setIsSidebarOpen(false);
+  };
+  useOnClickOutside(sidebarRef, closeHandler);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const isSmallScreen: boolean = width < 768;
 
   useEffect(() => {
     const overlayTarget: HTMLDivElement =
       document.querySelector("#overlay-content")!;
-    const lockTarget: HTMLDivElement =
-      document.querySelector("#lockable-content")!;
     if (isSidebarOpen) {
       overlayTarget.classList.add("lock-screen-overlay");
-      lockTarget.classList.add("overflow-hidden");
-      lockTarget.classList.add("h-[calc(100vh-53px)]");
+      document.body.classList.add("overflow-hidden");
+      document.body.classList.add("h-screen");
     } else {
       overlayTarget.classList.remove("lock-screen-overlay");
-      lockTarget.classList.remove("overflow-hidden");
-      lockTarget.classList.remove("h-[calc(100vh-53px)]");
+      document.body.classList.remove("overflow-hidden");
+      document.body.classList.remove("h-screen");
     }
   }, [isSidebarOpen]);
 
@@ -153,6 +158,7 @@ const Navbar = ({ navLinks, setDark = () => {}, isDark }: NavbarProps) => {
           className={`z-999 fixed top-[53px] left-0 duration-700 ease-in-out bg-darknavy overflow-hidden ${
             isSidebarOpen ? "w-[70%]" : "w-0 left-[-50%]"
           } py-14 slider-height flex flex-col items-center justify-between `}
+          ref={sidebarRef}
         >
           <NavLinksComp
             isSmallScreen={isSmallScreen}

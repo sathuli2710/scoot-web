@@ -28,7 +28,7 @@ const Layout = ({ children }: DivChildrenType) => {
   return (
     <div className="max-w-screen overflow-hidden dark:bg-[#121212]">
       <Navbar navLinks={navLinks} setDark={setDark} isDark={isDark} />
-      <div id="lockable-content" className="mt-[53px] md:mt-[77px]">
+      <div className="mt-[53px] md:mt-[77px]">
         {children}
         <Footer />
       </div>
