@@ -2,14 +2,35 @@ import { useEffect, useState } from "react";
 import Button from "./Button";
 import Logo from "./Logo";
 import { useWindowSize } from "usehooks-ts";
-import "../styles/Navbar.css";
-import {
-  HamburgerProps,
-  NavLinksCompProps,
-  NavbarLink,
-  NavbarProps,
-} from "../types/Navbar";
-import { Dimension } from "../types/common";
+import MoonIcon from "./MoonIcon";
+import SunIcon from "./SunIcon";
+
+export type Dimension = {
+  width: number;
+  height: number;
+};
+export type NavbarLink = {
+  label: string;
+  path: string;
+  isNewTab: boolean;
+};
+
+export type NavbarProps = {
+  navLinks: NavbarLink[];
+  setDark?: React.Dispatch<React.SetStateAction<boolean>>;
+  isDark?: boolean;
+};
+
+export type NavLinksCompProps = {
+  isSmallScreen: boolean;
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  navLinks: NavbarLink[];
+} & React.ComponentPropsWithRef<"ul">;
+
+export type HamburgerProps = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const Hamburger = ({
   isOpen = false,
@@ -79,23 +100,23 @@ export const NavLinksComp = ({
     >
       {navLinks.map((navLink: NavbarLink) => (
         <li
-          key={Symbol(navLink.label).toString()}
+          key={navLink?.path}
           className={`w-full ${
             isSmallScreen ? "text-h4" : "text-body"
           } hover:text-yellow selection:bg-transparent cursor-pointer grid place-items-center`}
-          onClick={() => linkClickHandler(navLink.path, navLink.isNewTab)}
+          onClick={() => linkClickHandler(navLink?.path, navLink?.isNewTab)}
         >
-          {navLink.label}
+          {navLink?.label}
         </li>
       ))}
     </ul>
   );
 };
 
-const Navbar = ({ navLinks }: NavbarProps) => {
+const Navbar = ({ navLinks, setDark = () => {}, isDark }: NavbarProps) => {
   const { width }: Dimension = useWindowSize();
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-  const isSmallScreen = width < 768;
+  const isSmallScreen: boolean = width < 768;
 
   useEffect(() => {
     const lockTarget: HTMLDivElement =
@@ -118,7 +139,7 @@ const Navbar = ({ navLinks }: NavbarProps) => {
         </nav>
         <div
           className={`z-999 absolute top-[53px] left-0 duration-700 ease-in-out bg-darknavy overflow-hidden ${
-            isSidebarOpen ? "w-[60%]" : "w-0 left-[-50%]"
+            isSidebarOpen ? "w-[70%]" : "w-0 left-[-50%]"
           } py-14 slider-height flex flex-col items-center justify-between `}
         >
           <NavLinksComp
@@ -127,7 +148,16 @@ const Navbar = ({ navLinks }: NavbarProps) => {
             setIsOpen={setIsSidebarOpen}
             className="text-dimgrey"
           />
-          <Button variant="filled" btnText="Get Scootin" />
+          <div className="flex flex-col items-center gap-y-3">
+            <div
+              className="bg-dimgrey dark:bg-lightgrey text-white dark:text-black grid place-items-center rounded-full w-[40px] h-[40px] cursor-pointer"
+              onClick={() => setDark((prevValue) => !prevValue)}
+            >
+              {!isDark && <SunIcon />}
+              {isDark && <MoonIcon />}
+            </div>
+            <Button variant="filled" btnText="Get Scootin" />
+          </div>
         </div>
       </>
     );
@@ -135,7 +165,8 @@ const Navbar = ({ navLinks }: NavbarProps) => {
   return (
     <nav className="w-full py-3 flex justify-between items-stretch px-5">
       <div className="flex gap-x-[3.125rem] items-center">
-        <Logo fill="#495567" />
+        <Logo fill="#495567" className="dark:hidden" />
+        <Logo fill="#FFFFFF" className="dark:block hidden" />
         <NavLinksComp
           isSmallScreen={isSmallScreen}
           navLinks={navLinks}
@@ -143,7 +174,16 @@ const Navbar = ({ navLinks }: NavbarProps) => {
           className="text-dimgrey"
         />
       </div>
-      <Button variant="filled" btnText="Get Scootin" />
+      <div className="flex items-center gap-x-3">
+        <div
+          className="bg-darknavy dark:bg-lightgrey text-white dark:text-black grid place-items-center rounded-full w-[40px] h-[40px] cursor-pointer"
+          onClick={() => setDark((prevValue) => !prevValue)}
+        >
+          {!isDark && <SunIcon />}
+          {isDark && <MoonIcon />}
+        </div>
+        <Button variant="filled" btnText="Get Scootin" />
+      </div>
     </nav>
   );
 };

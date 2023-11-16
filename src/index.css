@@ -6,8 +6,28 @@
 
 @layer components {
   /* .text-selection::selection {
-    @apply bg-yellow;
+    @apply bg-yellow dark:bg-red-400;
     @apply bg-opacity-20;
+  } */
+
+  /* .bg-yellow dark:bg-red-400 {
+    @apply dark:bg-red-400;
+  }
+
+  .text-yellow {
+    @apply dark:text-red-400;
+  }
+  
+  .border-yellow dark:border-red-400 {
+    @apply dark:border-red-400;
+  }
+
+  .bg-white {
+    @apply dark:bg-[#121212];
+  }
+
+  .text-dimgrey {
+    @apply dark:text-lightgrey;
   } */
 
   .text-h1 {
@@ -52,4 +72,55 @@
     @apply font-bodyfont;
     /* @apply text-selection; */
   }
+
+  .bg-image-opacity {
+    /* @apply content-[' ']; */
+    @apply block;
+    @apply absolute;
+    @apply left-0;
+    @apply top-0;
+    @apply w-full;
+    @apply h-full;
+    @apply opacity-75;
+    @apply bg-[#2F3B59];
+    @apply bg-no-repeat;
+    @apply bg-cover;
+    /* @apply bg-[50% 0]; */
+  }
+
+  .homepageherobg {
+    background: url("/src/assets/heroimage.png");
+  }
+  .aboutpagebg::before {
+    background-image: linear-gradient(
+        0deg,
+        rgba(47, 59, 89, 0.75),
+        rgba(47, 59, 89, 0.75)
+      ),
+      url("/src/assets/aboutbg.png");
+  }
+  .locationspagebg::before {
+    background-image: linear-gradient(
+        0deg,
+        rgba(47, 59, 89, 0.75),
+        rgba(47, 59, 89, 0.75)
+      ),
+      url("/src/assets/locationsbg.png");
+  }
 }
+
+.slider-height {
+  min-height: calc(100% - 53px);
+  /* min-height: calc(-webkit-fill-available - 53px); */
+  /* min-height: calc(fill-available - 53px);
+  min-height: --webkit-fill-available; */
+}
+
+/* .lock-screen-overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10;
+  position: fixed;
+  inset: 0;
+} */

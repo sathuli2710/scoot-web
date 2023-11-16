@@ -1,24 +1,25 @@
-import { aboutGridSectionData } from "../constants/gridSectionData";
+import { aboutGridSectionData } from "../data/gridSectionData";
 import { GridSectionComp } from "../components/GridSection";
 import Value from "../components/Value";
 import {
   howItWorksAccordionData,
   safeDrivingAccordionData,
   valuesData,
-} from "../constants/aboutPageData";
+} from "../data/aboutPageData";
 import Accordion from "../components/Accordion";
 import PageHeadingComp from "../components/PageHeadingComp";
 
 const About: React.FC = () => {
   return (
     <main className="px-6">
-      <PageHeadingComp title="About" bgSrc="/aboutBg.png" />
+      <PageHeadingComp title="About" bgImageClass="aboutpagebg" />
       <div>
         {aboutGridSectionData.map((grid, idx) => (
           <GridSectionComp
             key={grid.id}
             {...grid}
             isInverse={idx % 2 === 1 ? true : false}
+            isButton={false}
           />
         ))}
       </div>

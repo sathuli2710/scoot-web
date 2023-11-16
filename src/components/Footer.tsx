@@ -5,7 +5,7 @@ import {
   playstore,
   twitterIcon,
 } from "../assets";
-import { navLinks } from "../constants/navLinks";
+import { navLinks } from "../data/navLinks";
 import Logo from "./Logo";
 
 const Footer = () => {

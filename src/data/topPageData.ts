@@ -1,12 +1,6 @@
 import { city, personwithmobile, wallet } from "../assets";
-
-type GridData = {
-  id: number;
-  title: string;
-  description: string;
-  btntext?: string;
-  imgSrc: string;
-};
+import { GridData } from "../components/GridSection";
+import { ProcessProps } from "../components/Process";
 
 export const topGridSectionData: GridData[] = [
   {
@@ -35,19 +29,23 @@ export const topGridSectionData: GridData[] = [
   },
 ];
 
-export const aboutGridSectionData: GridData[] = [
+export const processesData: ProcessProps[] = [
   {
-    id: 1,
-    title: "Mobility for the digital era",
+    title: "Locate with app",
     description:
-      "Getting around should be simple (and even fun!) for everyone. We embrace technology to provide low cost, smart access to scooters at your fingertips.",
-    imgSrc: personwithmobile,
+      "Use the app to find the nearest scooter to you. We are continuously placing scooters in the areas with most demand, so one should never be too far away. ",
+    iconComp: "phone",
   },
   {
-    id: 2,
-    title: "Better urban living",
+    title: "Pick your scooter",
     description:
-      "We’re helping connect cities and bring people closer together. Our scooters are also fully-electric and we offset the minimal carbon footprint for each ride.",
-    imgSrc: city,
+      "We show the most important info for the scooters closest to you. So you know how much charge they have left and can see roughly how much it will cost.",
+    iconComp: "scooter",
+  },
+  {
+    title: "Enjoy the ride",
+    description:
+      "Scan the QR code and the bike will unlock. Retract the cable lock, put on a helmet, and you’re off! Always lock bikes away from walkways and accessibility ramps.",
+    iconComp: "rider",
   },
 ];

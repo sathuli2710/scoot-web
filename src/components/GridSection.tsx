@@ -1,25 +1,25 @@
+import { topGridSectionData } from "../data/topPageData";
 import Button from "./Button";
 import CircleComp from "./CircleComp";
-import personwithmobile from "../assets/personwithmobile.png";
-import { topGridSectionData } from "../constants/gridSectionData";
 
-type GridSectionCompProps = {
+export type GridData = {
+  id?: number;
   title: string;
   description: string;
   btntext?: string;
   imgSrc: string;
-  isInverse: boolean;
-  isButton?: boolean;
 };
 
+type GridSectionCompProps = {
+  isInverse?: boolean;
+  isButton?: boolean;
+} & GridData;
+
 export const GridSectionComp = ({
-  title = "Easy to use riding telemetry",
-  description = `The Scoot app is available with riding telemetry. This means it can
-  show you your average speed, how long you've been using the scooter,
-  your traveling distance, and many more things all in an easy to use
-  app.`,
-  btntext = "Learn More",
-  imgSrc = personwithmobile,
+  title = "",
+  description = "",
+  btntext = "",
+  imgSrc = "",
   isInverse = false,
   isButton = true,
 }: GridSectionCompProps) => {
@@ -37,7 +37,7 @@ export const GridSectionComp = ({
           isInverse
             ? "lg:-left-[125px] -left-[100px]"
             : "lg:-right-[125px] -right-[100px]"
-        } lg:w-[200px] lg:h-[200px] w-[200px] h-[200px] rounded-full bg-lightgrey`}
+        } lg:w-[200px] lg:h-[200px] w-[200px] h-[200px] rounded-full bg-lightgrey dark:bg-dimgrey`}
       ></div>
       <div
         className={`absolute ${
@@ -56,8 +56,8 @@ export const GridSectionComp = ({
         </div>
       </div>
       <div className="lg:w-[445px] w-[250px] flex flex-col gap-y-3 lg:items-start items-center text-center lg:text-start">
-        <h3 className="text-h3 w-full">{title}</h3>
-        <p className="text-body w-full">{description}</p>
+        <h3 className="text-h3 w-full text-darknavy">{title}</h3>
+        <p className="text-body w-full text-dimgrey">{description}</p>
         {isButton && <Button btnText={btntext} variant="filled" />}
       </div>
     </div>
