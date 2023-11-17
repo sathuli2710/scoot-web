@@ -15,6 +15,9 @@ const Careers: React.FC = () => {
         description="We’re always looking for ambitious individuals to help us on our journey. If you’re passionate about our mission to provide clean, accessible transport to improve urban living we want to hear from you!"
         imgSrc={careerperson}
         btntext="Say Hello"
+        buttonHandler={() =>
+          window.alert("Sorry for the inconvenience. Please try again later.")
+        }
       />
       <h3 className="text-h3 text-darknavy text-center my-5">Why join us?</h3>
       <div className="flex flex-col lg:flex-row items-center justify-around gap-4">

@@ -109,7 +109,7 @@ export const NavLinksComp = ({
           className={`w-full ${
             location?.pathname === navLink?.path ? "text-yellow" : ""
           } ${
-            isSmallScreen ? "text-h4" : "text-body"
+            isSmallScreen ? "text-h4" : "text-h6"
           } hover:text-yellow selection:bg-transparent cursor-pointer grid place-items-center`}
           onClick={() => linkClickHandler(navLink?.path, navLink?.isNewTab)}
         >

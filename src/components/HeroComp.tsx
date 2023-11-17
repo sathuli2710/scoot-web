@@ -31,6 +31,7 @@ const HeroComp = () => {
             btnText="Get Scootin"
             variant="filled"
             className="lg:ml-[90px] lg:self-start"
+            onClick={() => window.open("/locations", "_self")}
           />
         </div>
       </div>
