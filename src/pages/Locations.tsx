@@ -20,7 +20,7 @@ const Locations: React.FC = () => {
       />
       <div className="flex flex-col justify-center items-center gap-y-5 md:hidden">
         {cities.map((city) => (
-          <div className="w-full py-5 bg-yellow bg-opacity-20 text-center text-h4">
+          <div className="w-full py-5 bg-yellow dark:bg-opacity-100 bg-opacity-20 text-center text-h4">
             {city}
           </div>
         ))}
