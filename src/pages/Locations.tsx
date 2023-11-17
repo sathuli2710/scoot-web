@@ -32,7 +32,13 @@ const Locations: React.FC = () => {
           We track requests and plan launches based on demand. Feel free to
           message us by clicking the link or messaging us on social.
         </p>
-        <Button variant="filled" btnText="Message Us" />
+        <Button
+          variant="filled"
+          btnText="Message Us"
+          onClick={() =>
+            window.alert("Sorry for the inconvenience. Please try again later.")
+          }
+        />
       </div>
     </main>
   );

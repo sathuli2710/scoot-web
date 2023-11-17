@@ -66,6 +66,15 @@
     /* @apply text-selection; */
   }
 
+  .text-h6 {
+    @apply text-[1.1rem];
+    @apply tracking-[-0.0669rem];
+    @apply leading-[1.75rem];
+    @apply font-headfont;
+    @apply font-bold;
+    /* @apply text-selection; */
+  }
+
   .text-body {
     @apply text-[0.9375rem];
     @apply leading-[1.5625rem];

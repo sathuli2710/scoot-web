@@ -12,7 +12,16 @@ const JobPost = ({ title = "", location = "" }: JobPostProps) => {
         <h4 className="text-h4 text-darknavy">{title}</h4>
         <p className="text-body text-dimgrey dark:text-lightgrey">{location}</p>
       </div>
-      <Button variant="filled" btnText="Apply" className="w-full md:w-auto" />
+      <Button
+        variant="filled"
+        btnText="Apply"
+        className="w-full md:w-auto"
+        onClick={() =>
+          window.alert(
+            "Sorry this position is on hold. Please try with another position"
+          )
+        }
+      />
     </div>
   );
 };

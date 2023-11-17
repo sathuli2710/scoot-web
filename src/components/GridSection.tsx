@@ -13,6 +13,7 @@ export type GridData = {
 type GridSectionCompProps = {
   isInverse?: boolean;
   isButton?: boolean;
+  buttonHandler?: Function;
 } & GridData;
 
 export const GridSectionComp = ({
@@ -22,6 +23,7 @@ export const GridSectionComp = ({
   imgSrc = "",
   isInverse = false,
   isButton = true,
+  buttonHandler = () => {},
 }: GridSectionCompProps) => {
   return (
     <div
@@ -58,7 +60,13 @@ export const GridSectionComp = ({
       <div className="lg:w-[445px] w-[250px] flex flex-col gap-y-3 lg:items-start items-center text-center lg:text-start">
         <h3 className="text-h3 w-full text-darknavy">{title}</h3>
         <p className="text-body w-full text-dimgrey">{description}</p>
-        {isButton && <Button btnText={btntext} variant="filled" />}
+        {isButton && (
+          <Button
+            btnText={btntext}
+            variant="filled"
+            onClick={() => buttonHandler()}
+          />
+        )}
       </div>
     </div>
   );
@@ -72,6 +80,7 @@ const GridSection = () => {
           key={grid.id}
           {...grid}
           isInverse={idx % 2 === 1 ? true : false}
+          buttonHandler={() => window.open("/about", "_self")}
         />
       ))}
     </div>
